@@ -5,7 +5,7 @@ export default function Location() {
   const { routeParams } = useConnect("selectRouteParams");
   const office = routeParams?.office.toUpperCase();
   const location = routeParams?.location.toUpperCase();
-  const {data, isPending, isError} = useCdaLocation({cdaParms: { office: office, location: location }});
+  const {data, isPending, isError} = useCdaLocation({cdaParams: { office: office, location: location }});
 
   if(isPending) return <span>Currently Loading....</span>;
   if(isError) return <span>There is an error....</span>;
@@ -14,7 +14,7 @@ export default function Location() {
     <UsaceBox className="mt-8" title={data["public-name"]}>
       <div>
         <ul>
-          {Object.key(data).map((key) => {
+          {Object.keys(data).map((key) => {
             return(
               <li key={key}>
                 <strong>{key}</strong>-{data[key]}

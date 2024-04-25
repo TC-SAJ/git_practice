@@ -1,7 +1,7 @@
 import { UsaceBox } from "@usace/groundwork";
 
 const office = "SAJ"
-const locations = ["SAD", "NAD", "SWD"];
+const locations = ["Okeechobee", "NAD", "SWD"];
 
 export default function Home() {
   return (
