@@ -8,7 +8,7 @@ import "./index.css";
 
 const store = getStore();
 
-if (process.env.NODE_ENV === "development") window.store = store;
+window.store = store;
 
 const queryClient = new QueryClient();
 

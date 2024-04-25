@@ -1,13 +1,11 @@
-import { UsaceBox } from "@usace/groundwork";
+import { UsaceBox, useCdaLocation } from "@usace/groundwork";
 import { useConnect } from "redux-bundler-hook";
 
 export default function Location() {
   const { routeParams } = useConnect("selectRouteParams");
-  const office = routeParams?.office?.toUpperCase();
-  const location = routeParams?.location?.toUpperCase();
-  const {data, isPending, isError} = useCdaLocation({
-    cdaParms: { office: office, location: location },
-  });
+  const office = routeParams?.office.toUpperCase();
+  const location = routeParams?.location.toUpperCase();
+  const {data, isPending, isError} = useCdaLocation({cdaParms: { office: office, location: location }});
 
   if(isPending) return <span>Currently Loading....</span>;
   if(isError) return <span>There is an error....</span>;
@@ -15,6 +13,15 @@ export default function Location() {
   return (
     <UsaceBox className="mt-8" title={data["public-name"]}>
       <div>
+        <ul>
+          {Object.key(data).map((key) => {
+            return(
+              <li key={key}>
+                <strong>{key}</strong>-{data[key]}
+              </li>
+            )
+          })}
+        </ul>
         <p>This could be a detail page about {location}</p>
         <a className="hover:underline" href="/">
           Go back home
