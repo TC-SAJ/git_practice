@@ -5,7 +5,7 @@ const locations = ["Okeechobee", "NAD", "SWD"];
 
 export default function Home() {
   return (
-    <UsaceBox className="mt-8" title="Welcome Home">
+    <UsaceBox className="mt-8" title="Tommy">
       <div>
         <p>Choose a location:</p>
         <ul>
